@@ -1,0 +1,21 @@
+{
+  "name": "reportrello",
+  "homepage": "https://github.com/SauloSilva/reportrello",
+  "authors": [
+    "Saulo Santiago <saulodasilvasantiago@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

@@ -8,6 +8,9 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+.sass-cache/
+public/
+vendor/assets/javascripts/
 
 ## Specific to RubyMotion:
 .dat*
