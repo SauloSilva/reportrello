@@ -1,0 +1,21 @@
+%form{ action: "/user/#{@user.id}/imports", method: 'POST' }
+  %label Report Name
+  %input{ name: 'report[name]' }
+
+  %label Report Description
+  %input{ name: 'report[description]', type: 'textarea' }
+
+  %label Board
+  %input{ name: 'import[board_name]' }
+
+  %label List
+  %input{ name: 'import[list_name]' }
+
+  %label Checklist
+  %input{ name: 'import[checklist_name]' }
+
+  %label Environment
+  %input{ name: 'import[environment]' }
+  %input{ name: 'import[user_id]', value: @user.id, type: 'hidden' }
+
+  %input{ type: 'submit' }
