@@ -3,6 +3,11 @@ source "https://rubygems.org"
 gem 'sinatra', '1.4.6'
 gem 'sinatra-contrib', '1.4.6'
 
+gem 'sinatra-activerecord', '2.0.9'
+gem 'pg', '0.18.4'
+
+gem 'sinatra-flash', '0.3.0'
+
 gem 'haml', '4.0.7'
 gem 'sinatra-asset-pipeline', '0.7.0'
 
