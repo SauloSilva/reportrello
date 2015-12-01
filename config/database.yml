@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: reportrello_development
+  pool: 5
+  username: postgres
+  host: localhost
+  template: template0
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: reportrello_test
+  pool: 5
+  username: postgres
+  min_messages: WARNING
+  host: localhost
+  template: template0
+
+production: &production
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+
+staging:
+  <<: *production
