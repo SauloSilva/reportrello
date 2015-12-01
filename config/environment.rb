@@ -10,6 +10,9 @@ APP_NAME = APP_ROOT.basename.to_s
 
 # Sinatra configuration
 configure do
+  register Sinatra::ActiveRecordExtension
+  register Sinatra::Flash
+
   set :assets_prefix, %w(app/assets vendor/assets)
   set :assets_css_compressor, :sass
   set :assets_js_compressor, :uglifier
@@ -24,6 +27,10 @@ configure do
 
   register Sinatra::AssetPipeline
 end
+
+# Load the models
+Dir[APP_ROOT + 'app/models/**/*.rb'].each { |file| require file }
+
 
 # Load the routes
 Dir[APP_ROOT + 'app/actions/**/*.rb'].each { |file| require file }
