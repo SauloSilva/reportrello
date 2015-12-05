@@ -1,8 +1,8 @@
 module Trello
   module Finders
     class List
-      def initialize(import)
-        @import = import
+      def initialize(report)
+        @report = report
       end
 
       def find
@@ -11,15 +11,15 @@ module Trello
 
       private
 
-      attr_reader :import
+      attr_reader :report
 
       def board
-        Trello::Finders::Board.new(import).find
+        Trello::Finders::Board.new(report).find
       end
 
       def find_list
         board.lists.keep_if do |list|
-          list.name == import.list_name
+          list.name == report.list_name
         end.first
       end
     end

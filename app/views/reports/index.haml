@@ -1,0 +1,38 @@
+%h1 Reports list
+
+- if @reports.present?
+  %a{ href: '/reports/import_all' } Import all
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Board Name
+        %th List Name
+        %th Checklist Name
+        %th Environment
+        %th Reported at
+
+    %tbody
+      - @reports.each do |report|
+        %tr
+          %td= report.name
+          %td= report.description
+          %td= report.board_name
+          %td= report.list_name
+          %td= report.checklist_name
+          %td= report.environment
+          %td
+            - if report.reported_at.present?
+              = report.reported_at
+            - else
+              Not imported
+          %td.action
+            - if report.reported_at.present?
+              %a{ href: "reports/#{report.id}" } Details
+            - else
+              %a{ href: "reports/#{report.id}/import" } Import now
+
+- else
+  %span Not yet have any report

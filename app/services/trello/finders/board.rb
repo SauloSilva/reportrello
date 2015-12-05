@@ -1,8 +1,8 @@
 module Trello
   module Finders
     class Board
-      def initialize(import)
-        @import = import
+      def initialize(report)
+        @report = report
       end
 
       def find
@@ -11,14 +11,14 @@ module Trello
 
       private
 
-      attr_reader :import
+      attr_reader :report
 
       def user
-        Trello::Finders::Member.new(import.user).find
+        Trello::Finders::Member.new(report.user).find
       end
 
       def find_board
-        user.boards.keep_if { |board| board.name == import.board_name }.first
+        user.boards.keep_if { |board| board.name == report.board_name }.first
       end
     end
   end

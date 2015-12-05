@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 3) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,28 +25,20 @@ ActiveRecord::Schema.define(version: 4) do
 
   add_index "checklists", ["task_id"], name: "index_checklists_on_task_id", using: :btree
 
-  create_table "imports", force: :cascade do |t|
+  create_table "reports", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
     t.string   "board_name"
     t.string   "list_name"
     t.string   "checklist_name"
     t.string   "environment"
-    t.datetime "imported_at"
+    t.datetime "reported_at"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "imports", ["user_id"], name: "index_imports_on_user_id", using: :btree
-
-  create_table "reports", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "import_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "reports", ["import_id"], name: "index_reports_on_import_id", using: :btree
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"

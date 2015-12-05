@@ -3,7 +3,12 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.string :name
       t.string :description
-      t.references :import, index: true
+      t.string :board_name
+      t.string :list_name
+      t.string :checklist_name
+      t.string :environment
+      t.timestamp :reported_at
+      t.references :user, index: true
       t.timestamps
     end
   end

@@ -1,0 +1,12 @@
+%h1= @report.name
+
+%h3= @report.description
+
+%ul
+  - @report.tasks.each do |task|
+    %li
+      Caso de teste: #{ task.name } (#{ @report.environment })
+
+      %ol
+        - task.checklists.each do |checklist|
+          %li= checklist.description

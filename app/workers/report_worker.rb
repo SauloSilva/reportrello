@@ -1,7 +1,7 @@
-class ImportWorker
+class ReportWorker
   include Sidekiq::Worker
 
   def perform(import_id)
-    Trello::Importer.new(import_id).call
+    Trello::Report.new(import_id).call
   end
 end
