@@ -31,6 +31,5 @@ end
 # Load the models
 Dir[APP_ROOT + 'app/models/**/*.rb'].each { |file| require file }
 
-
 # Load the routes
 Dir[APP_ROOT + 'app/actions/**/*.rb'].each { |file| require file }
