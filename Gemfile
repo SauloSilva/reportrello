@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'sinatra', '1.4.6'
 gem 'sinatra-contrib', '1.4.6'
+gem 'sidekiq', '4.0.1'
 
 gem 'sinatra-activerecord', '2.0.9'
 gem 'pg', '0.18.4'
