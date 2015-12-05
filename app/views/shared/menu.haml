@@ -1,0 +1,9 @@
+- if @current_user
+  %ul
+    %li
+      %h3= @current_user.fullname
+      %a{ href: '/loggout'} Loggout
+    %li
+      %a{ href: '/reports'} Reports list
+    %li
+      %a{ href: '/reports/new'} New Report
