@@ -7,6 +7,7 @@ module Trello
     attr_reader :report
 
     def call
+      return unless report
       Trello::Reports::Task.new(report).call
     end
   end

@@ -18,9 +18,13 @@ module Trello
       end
 
       def find_list
-        board.lists.keep_if do |list|
+        list = board.lists.keep_if do |list|
           list.name == report.list_name
         end.first
+
+        raise Trello::Errors::ListNotFound if list.nil?
+
+        list
       end
     end
   end

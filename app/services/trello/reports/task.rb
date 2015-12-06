@@ -7,7 +7,6 @@ module Trello
 
       def call
         report_tasks
-        update_report
       end
 
       private
@@ -31,10 +30,10 @@ module Trello
             next
           end
         end
-      end
 
-      def update_report
-        report.update_column(:reported_at, Time.now)
+        report.update_attributes(reported_at: Time.now, status: 'success', log: 'Imported has been success!')
+      rescue Trello::Errors::BoardNotFound, Trello::Errors::ListNotFound => error
+        report.update_attributes(status: 'warning', log: error.message)
       end
     end
   end

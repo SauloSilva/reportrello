@@ -18,7 +18,11 @@ module Trello
       end
 
       def find_board
-        user.boards.keep_if { |board| board.name == report.board_name }.first
+        board = user.boards.keep_if { |board| board.name == report.board_name }.first
+
+        raise Trello::Errors::BoardNotFound if board.nil?
+
+        board
       end
     end
   end
