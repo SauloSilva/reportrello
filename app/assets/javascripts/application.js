@@ -1,6 +1,10 @@
 //= require jquery
+//= require bootstrap-material-design
+//= require bootstrap-material-design/scripts/ripples
 
 $(function() {
+  $.material.init()
+
   $('.login-trello').click(function() {
     Reportrello.authorize();
   });
