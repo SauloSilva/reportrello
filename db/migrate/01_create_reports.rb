@@ -7,6 +7,8 @@ class CreateReports < ActiveRecord::Migration
       t.string :list_name
       t.string :checklist_name
       t.string :environment
+      t.string :status
+      t.text :log
       t.timestamp :reported_at
       t.references :user, index: true
       t.timestamps

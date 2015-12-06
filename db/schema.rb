@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.string   "list_name"
     t.string   "checklist_name"
     t.string   "environment"
+    t.string   "status"
+    t.text     "log"
     t.datetime "reported_at"
     t.integer  "user_id"
     t.datetime "created_at"
