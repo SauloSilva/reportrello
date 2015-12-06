@@ -16,6 +16,9 @@ gem 'activesupport', '4.2.5'
 gem 'ruby-trello', '1.3.0'
 gem 'puma', '2.15.3'
 
+gem 'pdfkit', '0.8.2'
+gem 'wkhtmltopdf-binary', '0.9.9.3'
+
 group :development, :test do
   gem 'tux', '0.3.0'
   gem 'pry', '0.10.3'

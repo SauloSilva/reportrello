@@ -4,6 +4,7 @@ require 'pathname'
 Bundler.require
 
 require 'sinatra/asset_pipeline'
+require 'pdfkit'
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
@@ -26,6 +27,8 @@ configure do
   set :views, File.join(Sinatra::Application.root, 'app', 'views')
 
   register Sinatra::AssetPipeline
+
+  use PDFKit::Middleware
 end
 
 # Load the models

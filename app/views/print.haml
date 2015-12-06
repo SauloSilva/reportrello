@@ -1,0 +1,18 @@
+!!!5
+%html{ lang: 'en' }
+  %head
+    %link{ rel: 'stylesheet', href: 'http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type: 'text/css' }
+    %link{ href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
+
+    %link{ href: stylesheet_path('application'), rel: 'stylesheet' }
+    %title Reportrello - print
+
+    %meta{ charset: "utf-8" }
+    %meta{ name: "print_media_type", content: "true"}
+    %meta{ name: "pdfkit-page_size", content: "Letter" }
+    %meta{ name: "pdfkit-margin_top", content: "0.0in" }
+    %meta{ name: "pdfkit-margin_right", content: "0.0in" }
+    %meta{ name: "pdfkit-margin_bottom", content: "0.0in" }
+    %meta{ name: "pdfkit-margin_left", content: "0.0in" }
+
+  %body.print= yield
