@@ -1,9 +1,11 @@
-%h1 Reports list
+%h3 Reports list
 
 - if @reports.present?
-  %a{ href: '/reports/import_all' } Import all
+  %a{ href: '/reports/import_all', class: 'btn btn-raised btn-primary' }
+    %i.material-icons sync
+    %span Import all
 
-  %table
+  %table.table.table-striped.table-hover
     %thead
       %tr
         %th Name
@@ -13,10 +15,12 @@
         %th Checklist Name
         %th Environment
         %th Reported at
+        %th Log
+        %th.actions
 
     %tbody
       - @reports.each do |report|
-        %tr
+        %tr{ class: report.status }
           %td= report.name
           %td= report.description
           %td= report.board_name
@@ -28,11 +32,29 @@
               = report.reported_at
             - else
               Not imported
-          %td.action
-            - if report.reported_at.present?
-              %a{ href: "reports/#{report.id}" } Details
-            - else
-              %a{ href: "reports/#{report.id}/import" } Import now
+          %td= report.log
+          %td.actions
+            - if report.success?
+              %a{ href: "reports/#{report.id}" }
+                %i.material-icons playlist_add_check
+                %span Details
+              %a{ href: "/reports/#{ report.id }/#{ report.name }.pdf", target: '_blank' }
+                %i.material-icons assignment
+                %span PDF
+
+            - if report.warning?
+              %a{ href: "reports/#{report.id}/import" }
+                %i.material-icons import_export
+                %span Import now
+
+              %a{ href: "reports/#{report.id}/edit" }
+                %i.material-icons edit
+                %span Edit
+
+            - if report.warning? || report.success?
+              %a{ href: "reports/#{report.id}/delete" }
+                %i.material-icons delete
+                %span Delete
 
 - else
   %span Not yet have any report
