@@ -4,7 +4,7 @@ register do
       return unless has_authentication
 
       unless user_logged?
-        flash[:error] = 'You is not logged'
+        flash['alert alert-danger'] = 'You is not logged'
         redirect '/'
       end
     end
@@ -14,7 +14,7 @@ end
 helpers do
   def errors_handler(record)
     record.errors.map do |key, value|
-      flash.now["error_#{ key }".to_sym] = "#{ key } #{ value }"
+      flash.now["error_#{ key } alert alert-danger"] = "#{ key } #{ value }"
     end
   end
 
