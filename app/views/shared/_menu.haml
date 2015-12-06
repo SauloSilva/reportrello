@@ -1,0 +1,23 @@
+- if @current_user
+  .navbar
+    .container-fluid
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav
+          %li
+            %a{ href: '/reports'}
+              %i.material-icons list
+              %span Reports list
+          %li
+            %a{ href: '/reports/new'}
+              %i.material-icons add
+              %span New Report
+
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a
+              %i.material-icons face
+              %span= @current_user.fullname
+          %li
+            %a{ href: '/loggout'}
+              %i.material-icons power
+              %span Loggout
