@@ -1,11 +1,18 @@
 !!!5
 %html{ lang: 'en' }
   %head
+    %link{ rel: 'stylesheet', href: 'http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type: 'text/css' }
+    %link{ href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet' }
+
     %link{ href: stylesheet_path('application'), rel: 'stylesheet' }
     %script{ src: javascript_path('application') }
     %script{ src: 'https://api.trello.com/1/client.js?key=64b59fd7744b9bc5b2a7259d6bced78d' }
     %title Reportrello
+
+    %meta{ charset: "utf-8" }
+
   %body
-    = styled_flash
-    = haml :'shared/menu', layout: false
-    = yield
+    = haml :'shared/_menu', layout: false
+    .container
+      = styled_flash
+      = yield
