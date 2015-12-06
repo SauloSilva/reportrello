@@ -1,21 +1,4 @@
-%form{ action: '/reports', method: 'POST' }
-  %label Report Name
-  %input{ name: 'report[name]' }
+%h3 New report
 
-  %label Report Description
-  %input{ name: 'report[description]', type: 'textarea' }
-
-  %label Board
-  %input{ name: 'report[board_name]' }
-
-  %label List
-  %input{ name: 'report[list_name]' }
-
-  %label Checklist
-  %input{ name: 'report[checklist_name]' }
-
-  %label Environment
-  %input{ name: 'report[environment]' }
-  %input{ name: 'report[user_id]', value: @current_user.id, type: 'hidden' }
-
-  %input{ type: 'submit' }
+%form{ action: '/reports', method: 'POST', class: 'form-horizontal' }
+  = haml :'reports/_form', layout: false

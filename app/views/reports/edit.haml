@@ -1,0 +1,4 @@
+%h3 Edit report #{ @report.name }
+
+%form{ action: "/reports/#{ @report.id }/edit", method: 'POST', class: 'form-horizontal' }
+  = haml :'reports/_form', layout: false

@@ -1,0 +1,29 @@
+.form-group.label-floating
+  %label{ class: 'control-label' } Report Name
+  %input{ name: 'report[name]', class: 'form-control', value: @report.name }
+
+.form-group.label-floating
+  %label.control-label Report Description
+  %input{ name: 'report[description]', type: 'textarea', class: 'form-control', value: @report.description }
+
+.form-group.label-floating
+  %label.control-label Board
+  %input{ name: 'report[board_name]', class: 'form-control', value: @report.board_name }
+
+.form-group.label-floating
+  %label.control-label List
+  %input{ name: 'report[list_name]', class: 'form-control', value: @report.list_name }
+
+.form-group.label-floating
+  %label.control-label Checklist
+  %input{ name: 'report[checklist_name]', class: 'form-control', value: @report.checklist_name }
+
+.form-group.label-floating
+  %label.control-label Environment
+  %input{ name: 'report[environment]', class: 'form-control', value: @report.environment }
+
+  %input{ name: 'report[status]', class: 'form-control', value: 'info', type: 'hidden' }
+  %input{ name: 'report[log]', class: 'form-control', value: 'Importing...', type: 'hidden' }
+
+.form-group
+  %input{ type: 'submit', class: 'btn btn-primary' }
