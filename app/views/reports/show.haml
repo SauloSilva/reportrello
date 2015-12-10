@@ -6,15 +6,16 @@
     %h3= @report.description
 
     %br
-    - @report.tasks.each do |task|
-      %p
-        %strong
-          Caso de teste:
-          #{ task.name }
-          %span.label.label-info= @report.environment
+    - @report.environments.each do |environment|
+      - environment.tasks.each do |task|
+        %p
+          %strong
+            Caso de teste:
+            #{ task.name }
+            %span.label.label-info= environment.name
 
-      %ul.checklists
-        - task.checklists.each do |checklist|
-          %li= checklist.description
+        %ul.checklists
+          - task.checklists.each do |checklist|
+            %li= checklist.description
 
-      %br
+        %br

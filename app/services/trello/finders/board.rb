@@ -1,8 +1,8 @@
 module Trello
   module Finders
     class Board
-      def initialize(report)
-        @report = report
+      def initialize(environment)
+        @environment = environment
       end
 
       def find
@@ -11,14 +11,14 @@ module Trello
 
       private
 
-      attr_reader :report
+      attr_reader :environment
 
       def user
-        Trello::Finders::Member.new(report.user).find
+        Trello::Finders::Member.new(environment.report.user).find
       end
 
       def find_board
-        board = user.boards.keep_if { |board| board.name == report.board_name }.first
+        board = user.boards.keep_if { |board| board.name == environment.board_name }.first
 
         raise Trello::Errors::BoardNotFound if board.nil?
 

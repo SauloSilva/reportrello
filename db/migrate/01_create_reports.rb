@@ -3,10 +3,6 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.string :name
       t.string :description
-      t.string :board_name
-      t.string :list_name
-      t.string :checklist_name
-      t.string :environment
       t.string :status
       t.text :log
       t.timestamp :reported_at

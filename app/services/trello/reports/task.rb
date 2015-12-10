@@ -1,39 +1,35 @@
 module Trello
   module Reports
     class Task
-      def initialize(report)
-        @report = report
+      def initialize(environment)
+        @environment = environment
       end
 
       def call
-        report_tasks
+        environment_tasks
       end
 
       private
 
-      attr_reader :report
+      attr_reader :environment
 
       def find_cards
-        Trello::Finders::List.new(report).find.cards
+        Trello::Finders::List.new(environment).find.cards
       end
 
-      def report_tasks
+      def environment_tasks
         find_cards.each do |card|
           begin
-            task = report.tasks.create!(
+            task = environment.tasks.create!(
               name: card.name
             )
 
-            Trello::Reports::Checklist.new(task, card, report).call
+            Trello::Reports::Checklist.new(task, card, environment).call
           rescue ActiveRecord::RecordInvalid => invalid
             p "ERRORS: ", invalid.record.errors
             next
           end
         end
-
-        report.update_attributes(reported_at: Time.now, status: 'success', log: 'Imported has been success!')
-      rescue Trello::Errors::BoardNotFound, Trello::Errors::ListNotFound => error
-        report.update_attributes(status: 'warning', log: error.message)
       end
     end
   end

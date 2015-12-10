@@ -10,10 +10,7 @@
       %tr
         %th Name
         %th Description
-        %th Board Name
-        %th List Name
-        %th Checklist Name
-        %th Environment
+        %th Environments
         %th Reported at
         %th Log
         %th.actions
@@ -23,10 +20,7 @@
         %tr{ class: report.status }
           %td= report.name
           %td= report.description
-          %td= report.board_name
-          %td= report.list_name
-          %td= report.checklist_name
-          %td= report.environment
+          %td= report.environments.count
           %td
             - if report.reported_at.present?
               = report.reported_at

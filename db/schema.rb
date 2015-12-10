@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 4) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,21 @@ ActiveRecord::Schema.define(version: 3) do
 
   add_index "checklists", ["task_id"], name: "index_checklists_on_task_id", using: :btree
 
-  create_table "reports", force: :cascade do |t|
+  create_table "environments", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
     t.string   "board_name"
     t.string   "list_name"
     t.string   "checklist_name"
-    t.string   "environment"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "environments", ["report_id"], name: "index_environments_on_report_id", using: :btree
+
+  create_table "reports", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
     t.string   "status"
     t.text     "log"
     t.datetime "reported_at"
@@ -44,12 +52,12 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
-    t.integer  "report_id"
+    t.integer  "environment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "tasks", ["report_id"], name: "index_tasks_on_report_id", using: :btree
+  add_index "tasks", ["environment_id"], name: "index_tasks_on_environment_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "token"

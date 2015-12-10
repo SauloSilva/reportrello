@@ -6,24 +6,42 @@
   %label.control-label Report Description
   %input{ name: 'report[description]', type: 'textarea', class: 'form-control', value: @report.description }
 
-.form-group.label-floating
-  %label.control-label Board
-  %input{ name: 'report[board_name]', class: 'form-control', value: @report.board_name }
-
-.form-group.label-floating
-  %label.control-label List
-  %input{ name: 'report[list_name]', class: 'form-control', value: @report.list_name }
-
-.form-group.label-floating
-  %label.control-label Checklist
-  %input{ name: 'report[checklist_name]', class: 'form-control', value: @report.checklist_name }
-
-.form-group.label-floating
-  %label.control-label Environment
-  %input{ name: 'report[environment]', class: 'form-control', value: @report.environment }
-
   %input{ name: 'report[status]', class: 'form-control', value: 'info', type: 'hidden' }
   %input{ name: 'report[log]', class: 'form-control', value: 'Importing...', type: 'hidden' }
 
+%h3 Environments
+
+%a{ class: 'btn btn-raised btn-primary add-environment' }
+  %i.material-icons add
+  %span Add
+
+.environments-field
+  - @report.environments.each_with_index do |environment, i|
+    .environment-field
+      .form-group.label-floating
+        %label.control-label Name
+        %input{ name: "report[environments_attributes][#{ i }][name]", class: 'form-control', value: environment.name }
+
+      .form-group.label-floating
+        %label.control-label Board Name
+        %input{ name: "report[environments_attributes][#{ i }][board_name]", class: 'form-control', value: environment.board_name }
+
+      .form-group.label-floating
+        %label.control-label List Name
+        %input{ name: "report[environments_attributes][#{ i }][list_name]", class: 'form-control', value: environment.list_name }
+
+      .form-group.label-floating
+        %label.control-label Checklist Name
+        %input{ name: "report[environments_attributes][#{ i }][checklist_name]", class: 'form-control', value: environment.checklist_name }
+
+      %a{ class: 'btn btn-raised btn-danger delete-environment' }
+        %i.material-icons delete
+        %span Delete
+
+      %br
+
 .form-group
   %input{ type: 'submit', class: 'btn btn-primary' }
+
+:javascript
+  new Reportrello.Environment();

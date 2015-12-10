@@ -1,24 +1,24 @@
 module Trello
   module Reports
     class Checklist
-      def initialize(task, card, report)
+      def initialize(task, card, environment)
         @task = task
         @card = card
-        @report = report
+        @environment = environment
       end
 
       def call
-        report_checklists
+        environment_checklists
       end
 
       private
 
-      attr_reader :task, :card, :report
+      attr_reader :task, :card, :environment
 
       def checklist
         @checklist ||= begin
           found_checklist = card.checklists.keep_if  do |item|
-            item.name == report.checklist_name
+            item.name == environment.checklist_name
           end.first
 
           return if found_checklist.nil?
@@ -32,7 +32,7 @@ module Trello
         checklist.delete_checklist_item(item.id)
       end
 
-      def report_checklists
+      def environment_checklists
         return if checklist.nil?
 
         checklist.items.map do |item|

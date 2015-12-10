@@ -1,8 +1,8 @@
 module Trello
   module Finders
     class List
-      def initialize(report)
-        @report = report
+      def initialize(environment)
+        @environment = environment
       end
 
       def find
@@ -11,15 +11,15 @@ module Trello
 
       private
 
-      attr_reader :report
+      attr_reader :environment
 
       def board
-        Trello::Finders::Board.new(report).find
+        Trello::Finders::Board.new(environment).find
       end
 
       def find_list
         list = board.lists.keep_if do |list|
-          list.name == report.list_name
+          list.name == environment.list_name
         end.first
 
         raise Trello::Errors::ListNotFound if list.nil?

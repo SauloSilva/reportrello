@@ -2,6 +2,8 @@
 
 get '/reports/new', auth: true do
   @report = @current_user.reports.new
+  @report.environments.new
+
   haml :'reports/new'
 end
 
