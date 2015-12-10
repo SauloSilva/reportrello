@@ -15,6 +15,7 @@ configure do
   register Sinatra::Flash
 
   set :assets_prefix, %w(app/assets vendor/assets)
+  set :assets_precompile, %w(application.js application.css *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
   set :assets_css_compressor, :sass
   set :assets_js_compressor, :uglifier
 
@@ -25,7 +26,6 @@ configure do
   set :session_secret, ENV['SESSION_KEY'] || 'reportrello'
 
   set :views, File.join(Sinatra::Application.root, 'app', 'views')
-
   register Sinatra::AssetPipeline
 
   use PDFKit::Middleware
