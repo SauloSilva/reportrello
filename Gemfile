@@ -25,3 +25,7 @@ group :development, :test do
   gem 'pry', '0.10.3'
   gem 'shotgun', '0.9.1'
 end
+
+group :development do
+  gem 'foreman', '0.75.0'
+end

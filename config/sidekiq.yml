@@ -1,0 +1,7 @@
+---
+:concurrency: 3
+
+staging:
+  :concurrency: 3
+production:
+  :concurrency: 3
