@@ -35,4 +35,5 @@ end
 Dir[APP_ROOT + 'app/models/**/*.rb'].each { |file| require file }
 
 # Load the routes
+require File.join(Sinatra::Application.root, 'app', 'actions', '_base')
 Dir[APP_ROOT + 'app/actions/**/*.rb'].each { |file| require file }
