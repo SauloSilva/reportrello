@@ -29,3 +29,5 @@ end
 group :development do
   gem 'foreman', '0.75.0'
 end
+
+gem 'rails_12factor', group: :production
