@@ -14,7 +14,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.4.0)
     arel (6.0.3)
     backports (3.6.7)
     bond (0.5.1)
@@ -85,7 +85,7 @@ GEM
       json
       oauth (~> 0.4.5)
       rest-client (~> 1.8.0)
-    sass (3.4.19)
+    sass (3.4.20)
     shotgun (0.9.1)
       rack (>= 1.0)
     sidekiq (4.0.1)
@@ -138,6 +138,9 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uglifier (2.7.2)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
@@ -164,6 +167,7 @@ DEPENDENCIES
   sinatra-contrib (= 1.4.6)
   sinatra-flash (= 0.3.0)
   tux (= 0.3.0)
+  uglifier (= 2.7.2)
   wkhtmltopdf-binary (= 0.9.9.3)
 
 BUNDLED WITH

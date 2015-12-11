@@ -30,4 +30,6 @@ group :development do
   gem 'foreman', '0.75.0'
 end
 
+gem 'uglifier', '2.7.2'
+
 gem 'rails_12factor', group: :production
