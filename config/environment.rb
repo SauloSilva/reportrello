@@ -9,6 +9,10 @@ require 'pdfkit'
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
+if %w(staging production).include?(ENV['RACK_ENV'])
+  require 'wkhtmltopdf-heroku'
+end
+
 # Sinatra configuration
 configure do
   register Sinatra::ActiveRecordExtension

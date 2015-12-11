@@ -18,18 +18,19 @@ gem 'ruby-trello', '1.3.0'
 gem 'puma', '2.15.3'
 
 gem 'pdfkit', '0.8.2'
-gem 'wkhtmltopdf-binary', '0.9.9.3'
+gem 'uglifier', '2.7.2'
 
 group :development, :test do
   gem 'tux', '0.3.0'
   gem 'pry', '0.10.3'
   gem 'shotgun', '0.9.1'
+  gem 'wkhtmltopdf-binary', '0.9.9.3'
 end
 
 group :development do
   gem 'foreman', '0.75.0'
 end
 
-gem 'uglifier', '2.7.2'
-
-gem 'rails_12factor', group: :production
+group :staging, :production do
+  gem 'wkhtmltopdf-heroku', '2.12.2.4'
+end

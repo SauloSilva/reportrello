@@ -11,6 +11,7 @@ require 'uri'
 
 uri = ENV['REDIS_URL'] || 'redis://127.0.0.1:6379/0'
 redis_server_size = ENV['REDIS_CONFIGURE_SERVER_SIZE'].to_i || 5
+redis_server_size = redis_server_size == 0 ? 5 : redis_server_size
 
 Sidekiq.configure_server do |config|
   config.redis = { size: redis_server_size, url: uri }
