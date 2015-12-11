@@ -4,16 +4,20 @@ require ::File.expand_path('../config/sidekiq',  __FILE__)
 set :app_file, __FILE__
 
 map '/' do
-  use Rack::Auth::Basic, "Protected Area" do |username, password|
-    username == 'user' && password == '102030'
+  if %w(staging production).include?(ENV['RACK_ENV'])
+    use Rack::Auth::Basic, "Protected Area" do |username, password|
+      username == ENV['APP_USERNAME'] && password == ENV['APP_PASSWORD']
+    end
   end
 
   run Sinatra::Application
 end
 
 map '/sidekiq' do
-  use Rack::Auth::Basic, "Protected Area" do |username, password|
-    username == 'admin' && password == '102030'
+  if %w(staging production).include?(ENV['RACK_ENV'])
+    use Rack::Auth::Basic, "Protected Area" do |username, password|
+      username == ENV['SIDEKIQ_USERNAME'] && password == ENV['SIDEKIQ_PASSWORD']
+    end
   end
 
   run Sidekiq::Web
