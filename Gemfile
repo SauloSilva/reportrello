@@ -15,7 +15,7 @@ gem 'sinatra-asset-pipeline', '0.7.0'
 
 gem 'activesupport', '4.2.5'
 gem 'ruby-trello', '1.3.0'
-gem 'puma', '2.15.3'
+gem 'puma', '4.3.12'
 
 gem 'pdfkit', '0.8.2'
 gem 'uglifier', '2.7.2'
