@@ -3,7 +3,7 @@ ruby "2.2.3"
 
 gem 'sinatra', '1.4.6'
 gem 'sinatra-contrib', '1.4.6'
-gem 'sidekiq', '4.0.1'
+gem 'sidekiq', '5.2.8'
 
 gem 'sinatra-activerecord', '2.0.9'
 gem 'pg', '0.18.4'
